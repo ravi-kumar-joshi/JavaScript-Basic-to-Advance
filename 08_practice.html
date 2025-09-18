@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom And Events Practice</title>
+</head>
+<body>
+    <h1>Hello JavaScript</h1>
+    <button>Enroll now</button>
+    <p>Hello Friends!</p>
+    <input type="text" placeholder="Start Typing...">
+
+    <script>
+        let heading = document.querySelector("h1");
+
+        let button = document.querySelector("button");
+
+        let input = document.querySelector("input");
+
+        let paragraph = document.querySelector("p");
+
+        button.addEventListener("click", function() {
+            heading.innerText = "Welcome To JavaScript";
+            heading.style.color = "red";
+            input.value = "";
+        });
+
+        button.addEventListener("mouseover", function() {
+            button.style.backgroundColor = "yellow";
+            button.style.color = "black";
+        });
+
+        button.addEventListener("mouseout", function() {
+            button.style.backgroundColor = "black";
+            button.style.color = "white";
+        });
+
+
+
+        input.addEventListener("input", function() {
+             paragraph.innerText = input.value;
+            console.log("Typing : ",input.value);
+        });
+
+    </script>
+</body>
+</html>
