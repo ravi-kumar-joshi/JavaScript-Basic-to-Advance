@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms & Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        #container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    <h1>Form Validation Example</h1>
+    <form action="#" id="myForm">
+        <input type="text" id="nameInput" placeholder="Enter your name" required>
+        <input type="email" id="emailInput" placeholder="Enter your email" required>
+        <button type="submit">submit</button>
+        </div>
+    </form>
+    <script>
+        let form = document.getElementById('myForm');
+        let nameInput = document.getElementById('nameInput');
+        let emailInput = document.getElementById('emailInput');
+
+        form.addEventListener('submit', function(event) {
+            if (nameInput.value.trim() === "") {
+                event.preventDefault();
+                alert("Please enter your name.");
+            }
+            if(!emailInput.value.includes("@") || !emailInput.value.includes(".")) {
+                event.preventDefault();
+                alert("Please enter a valid email address.");
+            }
+            console.log(`Form submitted with name: ${nameInput.value}`);
+            console.log(`Form submitted with email: ${emailInput.value}`);
+            
+        });
+
+        nameInput.addEventListener("input", function(){
+            if(nameInput.value.trim().length < 3){
+                nameInput.style.borderColor = "red";
+            } else {
+                nameInput.style.borderColor = "green";
+            }
+        });
+    </script>
+</body>
+</html>
