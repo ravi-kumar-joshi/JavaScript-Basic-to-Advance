@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events</title>
+    <style>
+        .container {
+            width: 400px;
+            padding: 40px;
+            border: 2px solid rgb(183, 180, 180);
+            margin: 10px;
+        }
+
+        h2 {
+            font-size: 35px;
+        }
+
+        input {
+          display: block;
+          margin: 10px 0;
+          padding: 8px;
+          width: 250px;
+          border: 2px solid gray;
+          border-radius: 5px;
+          font-size: 14px;
+        }
+
+        p {
+            font-size: 3vw;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Keyboard Event Example</h2>
+        <input type="text" id="userInput" placeholder="Type Something..">
+        <p id="output">You typed : </p>
+    </div>
+    <div class="container">
+        <h2>Mouse Events Example</h2>
+        <div id="box">Hover or Double Click Me!</div>
+
+    </div>
+    <div class="container">
+        <h2>Form Events Example</h2>
+        <input type="text" placeholder="Enter your name">
+        <input type="email" placeholder="Enter your email">
+        <input type="password" placeholder="Enter your password">
+
+    </div>
+    <script>
+        const inputBox = document.getElementById("userInput");
+        const output = document.getElementById("output");
+
+        inputBox.addEventListener("keyup", function () {
+            output.textContent = "You typed : " + inputBox.value;
+        });
+
+        const box = document.getElementById("box");
+
+        box.addEventListener("mouseover", function () {
+            box.style.backgroundColor = "lightgreen";
+            box.textContent = "Hover or Double Click Me!";
+        });
+
+        box.addEventListener("dblclick", function () {
+            box.style.width = "300px";
+            box.style.height = "300px";
+            box.style.backgroundColor = "orange";
+            box.textContent = "Double Clicked!";
+        });
+
+        const inputs = document.querySelectorAll("input");
+        // On Focus
+        inputs.forEach(function (input) {
+            input.addEventListener("focus", function () {
+                input.style.border = "2px solid blue";
+                input.style.backgroundColor = "#f0f8ff";
+            });
+            // On Blur
+
+            input.addEventListener("blur", function () {
+                input.style.border = "2px solid gray";
+                input.style.backgroundColor = "white";
+            });
+        });
+
+
+
+    </script>
+</body>
+
+</html>
