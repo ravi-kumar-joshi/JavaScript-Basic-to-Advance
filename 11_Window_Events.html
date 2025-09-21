@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Events</title>
+</head>
+
+<body>
+    <h2>Window Events Example</h2>
+    <p>Resize or scroll the window and check console.</p>
+
+
+    <h2>Event Bubbling</h2>
+    <p><mark>Event Bubbling is the concept in which an event starts from the deepest element and then propagates up to
+            the parent elements. For example, if you have a button inside a div, and both have click event listeners,
+            clicking the button will first trigger the button's click event, and then the div's click event. This is
+            because the event bubbles up from the button to its parent div.</mark>
+    </p>
+
+    <!-- Event Bubbling Example: -->
+
+    <div id="parent" style="padding:20px; background:lightblue;">Parent Div
+        <button id="child">Click Me</button>
+    </div>
+
+
+    <!-- Event Delegation -->
+    <h2>Events Delegation</h2>
+    <mark>
+        Event Delegation is a technique in which a single event listener is added to a parent element to manage events
+        for multiple child elements. Instead of attaching individual event listeners to each child element, you can
+        attach one listener to the parent and use event properties to determine which child was interacted with. This
+        approach improves performance and simplifies code management, especially when dealing with dynamic content.
+    </mark>
+
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <script>
+        window.addEventListener("load", function () {
+            console.log("Page fully loaded!");
+        });
+
+        window.addEventListener("resize", function () {
+            console.log("Window resized!");
+        });
+
+        window.addEventListener("scroll", function () {
+            console.log("Page scrolled!");
+        });
+
+
+        // events bubbling
+
+        document.getElementById("child").addEventListener("click", function () {
+            console.log("Child button clicked!");
+        });
+
+        document.getElementById("parent").addEventListener("click", function () {
+            console.log("Parent div clicked!");
+        });
+
+        // Event Delegation
+        document.getElementById("list").addEventListener("click", function (event) {
+            if (event.target.tagName === "LI") {
+                console.log("You clicked on: " + event.target.textContent);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
